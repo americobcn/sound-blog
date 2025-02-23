@@ -1,18 +1,18 @@
-{% extends "blog/base.html" %} {% block content %}
-<h1 class="bg-amber-700">My Blog</h1>
-<ul>
-  {% for post in posts %}
-  <li class="bg-emerald-900 mv-5 p-4">
-    <h2 class="text-amber-500 bg-cyan-950 underline text-4xl">
-      <a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a>
-    </h2>
-    <p class="text-gray-400 text-2xs font-thin">
-      Published {{ post.publish }} by {{ post.author }}
-    </p>
-    <p class="bg-cyan-950 text-amber-400">
-      {{ post.body|truncatewords:30|linebreaks }}
-    </p>
-    {% endfor %}
-  </li>
-</ul>
+{% extends "blog/base.html" %}
+{% block content %}
+  <ul>
+    {% for post in posts %}
+      <li class="my-3">
+        <article class="flex max-w-xl flex-col items-start justify-between">
+          <h2 class="text-3xl text-amber-300">
+            <a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a>
+          </h2>
+          <p class="text-gray-300 text-xs font-thin">Published {{ post.publish }} by {{ post.author }}</p>
+          <span class="text-gray-200">{{ post.body|truncatewords:30|linebreaks }}</span>
+        </article>
+      {% endfor %}
+    </li>
+  </ul>
 {% endblock content %}
+{% block footer %}
+{% endblock footer %}
