@@ -5,6 +5,7 @@ colorama==0.4.6
 cssbeautifier==1.15.3
 Django==5.1.6
 django-browser-reload==1.18.0
+django-dotenv==1.4.2
 djlint==1.36.4
 EditorConfig==0.17.0
 jsbeautifier==1.15.3
