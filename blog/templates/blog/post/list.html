@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <h1 class="bg-amber-700">My Blog</h1>
+  {% for post in posts %}
+    <h2 class="text-amber-500 bg-cyan-950">
+      <a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a>
+    </h2>
+    <p class="bg-amber-600">Published {{ post.publish }} by {{ post.author }}</p>
+    <p class="bg-cyan-950 text-amber-300">{{ post.body|truncatewords:30|linebreaks }}</p>
+  {% endfor %}
+{% endblock content %}
