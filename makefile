@@ -1,11 +1,14 @@
+runserver:
+	poetry run python manage.py runserver
+
 migrations:
-	python3 manage.py makemigrations
+	poetry run python manage.py makemigrations $(ARG)
 
 migrate:
-	python3 manage.py migrate
-
-runserver:
-	python3 manage.py runserver
+	poetry run python manage.py migrate $(ARG)
+	
+superuser:
+	poetry run python manage.py createsuperuser
 
 runcss:
 	npx @tailwindcss/cli -i ./blog/static/tailwind.css -o ./blog/static/css/blog.css --watch
