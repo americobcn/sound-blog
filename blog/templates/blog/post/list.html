@@ -1,14 +1,28 @@
 {% extends "blog/base.html" %}
 {% block content %}
-  <ul>
+  <div class="py-2 mt-8 max-w-4xl justify-self-center bg-slate-500 rounded-md px-3 grid grid-cols-2 max-sm:grid-cols-1">
+    <div>
+      <h2 class="text-3xl text-amber-400">
+        <a href="{{ post0.get_absolute_url }}">{{ post0.title }}</a>
+      </h2>
+      <p class="text-gray-300 text-xs font-thin mb-4">Published {{ post0.publish }} by {{ post0.author }}</p>
+      <span class="text-gray-200 ">{{ post0.body|truncatewords:30|linebreaks }}</span>
+    </div>
+    <img class="justify-self-center rounded-md my-2 max-sm:hidden"
+         width="300"
+         height="300"
+         src="https://xiengineering.com/wp-content/uploads/2021/06/What-is-Sound-Pressure-Level.jpg"
+         alt="vumeter">
+  </div>
+  <ul class="grid lg:grid-cols-3 mt-4">
     {% for post in posts %}
-      <li class="my-3">
-        <article class="flex max-w-xl flex-col items-start justify-between">
-          <h2 class="text-3xl text-amber-300">
+      <li class="rounded-md m-3 shadow shadow-lime-500">
+        <article class="bg-amber-700 rounded-md px-2 py-1.5 border-2 border-yellow-100 h-full">
+          <h2 class="text-3xl text-amber-300 border-b-1 border-yellow-300">
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
           </h2>
-          <p class="text-gray-300 text-xs font-thin">Published {{ post.publish }} by {{ post.author }}</p>
-          <span class="text-gray-200">{{ post.body|truncatewords:30|linebreaks }}</span>
+          <p class="text-gray-300 text-xs font-thin mt-0.5">Published {{ post.publish }} by {{ post.author }}</p>
+          <span class="text-gray-200 mt-3">{{ post.body|truncatewords:30|linebreaks }}</span>
         </article>
       {% endfor %}
     </li>

@@ -3,10 +3,9 @@ name = "sound-blog"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "americobcn",email = "americo.cot@gmail.com"}
+    {name = "americo",email = "americo@home.com"}
 ]
 license = {text = "MIT"}
-readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "annotated-types==0.7.0",
@@ -31,7 +30,6 @@ dependencies = [
     "tqdm==4.67.1",
     "typing_extensions==4.12.2",
 ]
-
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
