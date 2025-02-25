@@ -8,7 +8,7 @@ migrations:
 	poetry run python manage.py makemigrations $(ARG)
 
 migrate:
-	poetry run python manage.py migrate $(ARG)
+	poetry run python manage.py migrate
 	
 superuser:
 	poetry run python manage.py createsuperuser
