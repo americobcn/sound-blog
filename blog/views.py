@@ -42,8 +42,16 @@ def post_detail(request, year, month, day, post):
         publish__month=month,
         publish__day=day,
     )
-    data = model_to_dict(post)
-    return render(request, "blog/post/detail.html", {"post": post})
+    # List of active comments for the post
+    comments = post.comments.filter(active=True)
+
+    # From for users to comment
+    form = CommentForm()
+    return render(
+        request,
+        "blog/post/detail.html",
+        {"post": post, "comments": comments, "post": post},
+    )
 
 
 def post_share(request, post_id):
