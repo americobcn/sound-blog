@@ -79,7 +79,7 @@ def post_share(request, post_id):
             sent = True
     else:
         form = EmailPostForm()
-        print(f"post: {post.title}, by {post.author}\nform:\n{form},\nsent: {sent}")
+        # print(f"post: {post.title}, by {post.author}\nform:\n{form},\nsent: {sent}")
     return render(
         request,
         "blog/post/share.html",
