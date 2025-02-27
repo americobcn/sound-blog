@@ -1,6 +1,3 @@
-env:
-	poetry env activate
-
 runserver:
 	poetry run python manage.py runserver
 

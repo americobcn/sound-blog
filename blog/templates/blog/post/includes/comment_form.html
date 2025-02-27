@@ -1,13 +1,17 @@
-
-<h2 class="text-base/7 font-semibold text-amber-300">Add a new comment</h2>
-<div class="space-y-12">
-    <div class="border-b border-amber-900/10 pb-12">
-<form action='{% url "blog:post_comment" post.id %}' method='post' class="text-amber-300 block w-full rounded-md  px-3 py-1.5 border-2 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6">
-    {{ form.as_p }}
+<h2 class="font-semibold text-amber-300 mb-2">Add a new comment</h2>
+<form action='{% url "blog:post_comment" post.id %}'
+      method='post'
+      class="flex-col max-w-fit items-center text-amber-300 rounded-md px-3 py-1.5 border-2">
+    <span>Name
+        <div>{{ form.name }}</div>
+    </span>
+    <span>Email
+        <div>{{ form.email }}</div>
+    </span>
+    <p>Body</p>
+    {{ form.body }}
     {% csrf_token %}
-    <p>
-        <input type="submit" value="Add Comment" class="text-amber-300 block w-full rounded-md  px-3 py-1.5 border-2 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6">
-    </p>
-    </div>
-</div>
+    <input type="submit"
+           value="Add Comment"
+           class="border-2 rounded-md px-1.5 py-1.5 ml-2 mb-2 flex-none">
 </form>

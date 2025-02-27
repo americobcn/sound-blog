@@ -1,24 +1,24 @@
 {% extends "blog/base.html" %}
 {% block title %}
-    {{ post.title }}
+  {{ post.title }}
 {% endblock title %}
 {% block content %}
-    <h1 class="text-amber-400 text-3xl">{{ post.title }}</h1>
-    <p class="text-gray-300 text-xs font-thin">Published {{ post.publish }} by {{ post.author }}</p>
-    <span class="text-gray-200">{{ post.body|linebreaks }}</span>
-    <p>
-        <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
-    </p>
-    {% with comments.count as total_comments %}
-        <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
-    {% endwith %}
-    {% for comment in comments %}
-        <div>
-            <p class="text-amber-300">Comment {{ forloop.counter }} by {{ comment.name }} {{ comment.creted }}</p>
-            {{ comment.body| linebreaks }}
-        </div>
-    {% empty %}
+  <h1 class="text-amber-400 text-3xl">{{ post.title }}</h1>
+  <p class="text-gray-300 text-xs font-thin mb-2">Published {{ post.publish }} by {{ post.author }}</p>
+  <span class="text-gray-200">{{ post.body|linebreaks }}</span>
+  <p class="text-amber-200 mb-4 border-2 rounded-md px-2 mt-2 w-fit">
+    <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
+  </p>
+  {% with comments.count as total_comments %}
+    <h2 class="text-amber-300 border-t-1">{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
+  {% endwith %}
+  {% for comment in comments %}
+    <div>
+      <p class="text-amber-300">Comment {{ forloop.counter }} by {{ comment.name }} {{ comment.creted }}</p>
+      {{ comment.body| linebreaks }}
+    </div>
+  {% empty %}
     <p>No comments.</p>
-    {% endfor %}
-    {% include "blog/post/includes/comment_form.html" %}
+  {% endfor %}
+  {% include "blog/post/includes/comment_form.html" %}
 {% endblock content %}
