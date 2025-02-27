@@ -4,17 +4,22 @@
 {% endblock title %}
 {% block content %}
     {% if sent %}
-        <h1>Email Succesfully sent.</h1>
+        <h1 class="text-amber-400">Email Succesfully sent.</h1>
         <p>"{{ post.title }}" was succesfully sent to {{ form.cleaned_data.to }}.</p>
     {% else %}
-        <div class="text-gray-200">
-            <h1 class="text-amber-400 text-3xl">Share "{{ post.title }} by email"</h1>
+        <div>
+            <h1 class="text-amber-400 text-2xl">Share "{{ post.title }} by email"</h1>
             <form method="post"
                   novalidate
-                  class="py-2 bg-amber-700 border-1 rounded-md px-2.5 mt-2">
-                {{ form.as_p }}
+                  class="py-2 bg-gray-800 text-amber-300 w-fit border-1 rounded-md px-2.5 mt-2">
+                <span>Name{{ form.name }}</span>
+                <span>Email{{ form.email }}</span>
+                <p>To {{ form.to }}</p>
+                <span class="flex-wrap w-full">Comments{{ form.comments }}</span>
                 {% csrf_token %}
-                <input type="submit" value="Send email">
+                <input type="submit"
+                       value="Send email"
+                       class="border-2 rounded-md px-1.5 hover:border-amber-700 hover:text-amber-700 hover:bg-amber-200">
             </form>
         </div>
     {% endif %}

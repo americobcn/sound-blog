@@ -3,7 +3,7 @@
   <div class="py-2 mt-8 max-w-4xl justify-self-center bg-slate-500 rounded-md px-3 grid grid-cols-2 max-sm:grid-cols-1">
     <div>
       <h2 class="text-3xl text-amber-400">
-        <a href="{{ post0.get_absolute_url }}">{{ posts.0.title }}</a>
+        <a href="{{ posts.0.get_absolute_url }}">{{ posts.0.title }}</a>
       </h2>
       <p class="text-gray-300 text-xs font-thin mb-4">Published {{ posts.0.publish }} by {{ posts.0.author }}</p>
       <span class="text-gray-200 ">{{ posts.0.body|truncatewords:30|linebreaks }}</span>

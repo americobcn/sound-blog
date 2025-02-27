@@ -126,7 +126,7 @@ version = "1.36.4"
 description = "HTML Template Linter and Formatter"
 optional = false
 python-versions = ">=3.9"
-groups = ["main", "dev"]
+groups = ["dev"]
 files = [
     {file = "djlint-1.36.4-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:a2dfb60883ceb92465201bfd392291a7597c6752baede6fbb6f1980cac8d6c5c"},
     {file = "djlint-1.36.4-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:4bc6a1320c0030244b530ac200642f883d3daa451a115920ef3d56d08b644292"},
@@ -609,4 +609,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "2d6bdbd9b555069e289d4745c4dc0da12304d7e095c5f683cfc4832aafa25761"
+content-hash = "cc4b7d359a8a89feed20b6fe41eafd391d88e5b72eb73e0fb50cb5ce85fc5855"
