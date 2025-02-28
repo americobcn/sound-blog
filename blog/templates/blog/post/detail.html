@@ -6,23 +6,25 @@
   <h1 class="text-amber-400 text-3xl">{{ post.title }}</h1>
   <p class="text-gray-300 text-xs font-thin mb-2">Published {{ post.publish }} by {{ post.author }}</p>
   <span class="text-gray-200">{{ post.body|linebreaks }}</span>
-  <p class="text-amber-200 mb-4 border-2 rounded-md px-2 mt-2 w-fit hover:text-amber-800 hover:bg-amber-200">
-    <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
-  </p>
-  {% with comments.count as total_comments %}
-    <h2 class="text-amber-300 border-b border-gray-600 text-right">
-      {{ total_comments }} comment{{ total_comments|pluralize }}
-    </h2>
-  {% endwith %}
-  {% for comment in comments %}
-    <div class="border-b border-gray-600 mb-5">
-      <span class="text-amber-300 text-xs font-light">
-        Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}
-      </span>
-      <span class="text-gray-200">{{ comment.body| linebreaks }}</span>
-    </div>
-  {% empty %}
-    <p class="text-amber-300">No comments.</p>
-  {% endfor %}
+  <div class="flex-none w-full">
+    <p class="text-amber-200 mb-4 border-2 rounded-md px-2 mt-2 w-fit hover:text-amber-800 hover:bg-amber-200">
+      <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
+    </p>
+    {% with comments.count as total_comments %}
+      <h2 class="text-amber-300 border-b border-gray-600 text-left">
+        {{ total_comments }} comment{{ total_comments|pluralize }}
+      </h2>
+    {% endwith %}
+    {% for comment in comments %}
+      <div class="border-b border-gray-600 mb-5">
+        <span class="text-amber-300 text-xs font-light">
+          Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}
+        </span>
+        <span class="text-gray-200">{{ comment.body| linebreaks }}</span>
+      </div>
+    {% empty %}
+      <p class="text-amber-300">No comments.</p>
+    {% endfor %}
+  </div>
   {% include "blog/post/includes/comment_form.html" %}
 {% endblock content %}
