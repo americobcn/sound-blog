@@ -29,7 +29,7 @@ def post_list(request):
     return render(
         request,
         "blog/post/list.html",
-        {"posts": posts, "post0": posts[0]},
+        {"posts": posts}
     )
 
 

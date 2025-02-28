@@ -4,12 +4,10 @@
 {% endblock title %}
 {% block content %}
   {% if comment %}
-    <div class="bg-amber-100">
-      <h2>Your comment has been added.</h2>
-      <p>
-        <a href="{{ post.get_absolute_url }}">Back to the post</a>
-      </p>
-    </div>
+    <h2 class="text-xl text-amber-200 mb-1.5">Your comment has been added.</h2>
+    <p class="text-md border text-amber-500 bg-gray-800 text-center rounded-2xl hover:font-bold hover:bg-amber-300 hover:text-gray-900">
+      <a href="{{ post.get_absolute_url }}">Back to the post</a>
+    </p>
   {% else %}
     {% include "blog/post/includes/comment_form.html" %}
   {% endif %}
