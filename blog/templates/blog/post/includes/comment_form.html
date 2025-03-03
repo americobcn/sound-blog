@@ -1,5 +1,4 @@
 <div class="mt-3 w-full">
-    <h2 class="mb-2 text-center font-semibold text-amber-300">Add comment</h2>
     <form action='{% url "blog:post_comment" post.id %}'
           method="post"
           class="items-center rounded-md border-2 px-3 py-1.5 text-amber-300">
@@ -11,8 +10,6 @@
         </span>
         <p class="text-xs mb-1">Body</p>
         {{ form.body }} {% csrf_token %}
-        <input type="submit"
-               value="Add Comment"
-               class="mb-2 flex-none rounded-2xl border-2 px-3 py-1 text-sm hover:border-amber-700 hover:bg-amber-200 hover:text-amber-700 hover:font-bold" />
+        <input type="submit" value="Add Comment" class="btn mb-2" />
     </form>
 </div>

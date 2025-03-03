@@ -1,36 +1,36 @@
 {% extends "blog/base.html" %}
 {% block content %}
   {% if tag %}<h2>Posts tagged with "{{ tag.name }}"</h2>{% endif %}
-  <div class="hero">
+  <div class="hero items-center mb-5 m-2 md:mx-auto ">
     <div>
       <h2 class="text-3xl text-amber-400">
         <a href="{{ posts.0.get_absolute_url }}">{{ posts.0.title }}</a>
       </h2>
       {% for tag in posts.0.tags.all %}
-        <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+        <a href="{% url "blog:post_list_by_tag" tag.slug %}" class="text-xs">{{ tag.name }}</a>
         {% if not forloop.last %},{% endif %}
       {% endfor %}
-      <span class="text-gray-200">{{ posts.0.body|truncatewords:30|linebreaks }}</span>
+      <span class="text-gray-200">{{ posts.0.body|truncatewords:50|linebreaks }}</span>
       <p class="mb-4 text-xs font-thin text-gray-300">Published {{ posts.0.publish }} by {{ posts.0.author }}</p>
     </div>
-    <img class="my-2 h-auto w-full justify-self-center rounded-md max-sm:hidden"
+    <img class="my-2 h-auto w-full justify-self-center rounded-md max-sm:hidden sepia blur-xs backdrop-invert-65"
          width="300"
          height="300"
          src="https://xiengineering.com/wp-content/uploads/2021/06/What-is-Sound-Pressure-Level.jpg"
          alt="vumeter" />
   </div>
-  <ul class="mt-4 grid md:grid-cols-3">
+  <ul class="grid grid-cols-1 md:grid-cols-3">
     {% for post in posts|slice:"1:" %}
-      <li class="card m-3">
+      <li class="card m-3 items-center">
         <article>
           <h2 class="text-3xl text-amber-300">
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
           </h2>
           {% for tag in post.tags.all %}
-            <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+            <a href="{% url "blog:post_list_by_tag" tag.slug %}" class="text-xs">{{ tag.name }}</a>
             {% if not forloop.last %},{% endif %}
           {% endfor %}
-          <span class=" text-gray-300">{{ post.body|truncatewords:30|linebreaks }}</span>
+          <span class=" text-gray-300">{{ post.body|truncatewords:40|linebreaks }}</span>
           <p class="mt-0.5 text-xs font-thin text-gray-300">Published {{ post.publish }} by {{ post.author }}</p>
         </article>
       </li>
@@ -38,16 +38,3 @@
   </ul>
   {% include "pagination.html" with page=posts %}
 {% endblock content %}
-<!-- 
-{% if posts.0.tags.count %}
-        <p class="tag">
-          <span class="text-amber-100">Tags:</span> {{ posts.0.tags.all|join:", " }}
-        </p>
-{% endif %}
-
-{% if post.tags.count %}
-            <p class="tag my-2">
-              <span class="text-amber-100">Tags:</span> {{ post.tags.all|join:", " }}
-            </p>
-{% endif %}
--->

@@ -1,0 +1,7 @@
+<ul class="space-y-2 font-medium">
+    {% for post in latest_posts %}
+        <li class="flex-1 ms-3 whitespace-nowrap">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </li>
+    {% endfor %}
+</ul>

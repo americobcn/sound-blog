@@ -3,28 +3,40 @@
   {{ post.title }}
 {% endblock title %}
 {% block content %}
-  <h1 class="text-3xl text-amber-400">{{ post.title }}</h1>
-  <p class="mb-2 text-xs font-thin text-gray-300">Published {{ post.publish }} by {{ post.author }}</p>
-  <span class="text-gray-200">{{ post.body|linebreaks }}</span>
-  <div class="mt-3 w-full flex-none">
-    <p class="btn">
-      <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
-    </p>
-    {% with comments.count as total_comments %}
-      <h2 class="border-b border-gray-600 text-left text-amber-300 mt-2">
-        {{ total_comments }} comment{{ total_comments|pluralize }}
-      </h2>
-    {% endwith %}
-    {% for comment in comments %}
-      <div class="border-b border-gray-600">
-        <span class="text-gray-200">{{ comment.body| linebreaks }}</span>
-        <span class="text-xs font-thin text-gray-100">
-          Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}
-        </span>
+  <div class="mx-2 my-1 md:mx-5 md:mt-3">
+    <h1 class="text-3xl text-amber-400">{{ post.title }}</h1>
+    <p class="mb-2 text-xs font-thin text-gray-300">Published {{ post.publish }} by {{ post.author }}</p>
+    <span class="text-gray-200">{{ post.body|linebreaks }}</span>
+    <div class="mt-3 w-full flex-none">
+      <p class="btn">
+        <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
+      </p>
+      <div class="flex flex-col items-center text-slate-500">
+        <h2 class="text-md border-b-2">Related Posts</h2>
+        {% for post in similar_posts %}
+          <p class="text-xs mt-1 text-slate-400">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          </p>
+        {% empty %}
+          <p>No similar posts.</p>
+        {% endfor %}
       </div>
-    {% empty %}
-      <p class="text-amber-300">No comments.</p>
-    {% endfor %}
+      {% with comments.count as total_comments %}
+        <h2 class="border-b border-gray-600 text-left text-amber-300 mt-2">
+          {{ total_comments }} comment{{ total_comments|pluralize }}
+        </h2>
+      {% endwith %}
+      {% for comment in comments %}
+        <div class="border-b border-gray-600">
+          <span class="text-gray-200">{{ comment.body| linebreaks }}</span>
+          <span class="text-xs font-thin text-gray-100">
+            Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}
+          </span>
+        </div>
+      {% empty %}
+        <p class="text-amber-300">No comments.</p>
+      {% endfor %}
+    </div>
+    {% include "blog/post/includes/comment_form.html" %}
   </div>
-  {% include "blog/post/includes/comment_form.html" %}
 {% endblock content %}
