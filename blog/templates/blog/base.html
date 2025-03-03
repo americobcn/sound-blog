@@ -13,19 +13,16 @@
     </title>
     <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
   </head>
-  <body class="bg-gray-800">
-    {% include "blog/navbar.html" %}
-    <main id="content" class="mx-3 justify-items-center py-2">
+  <body class="bg-slate-900 text-amber-100 font-roboto h-screen flex flex-col">
+    <nav>
+      {% include "blog/post/includes/navbar.html" %}
+    </nav>
+    <main class="mx-3 justify-items-center py-2">
       {% block content %}
       {% endblock content %}
     </main>
-    <aside id="sidebar">
-      {% block sidebar %}
-      {% endblock sidebar %}
-    </aside>
-    <footer id="footer">
-      {% block footer %}
-      {% endblock footer %}
+    <footer>
+      {% include "blog/post/includes/footer.html" %}
     </footer>
   </body>
 </html>

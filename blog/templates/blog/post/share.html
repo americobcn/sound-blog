@@ -17,9 +17,7 @@
         <p>To {{ form.to }}</p>
         <span class="w-full flex-wrap">Comments{{ form.comments }}</span>
         {% csrf_token %}
-        <input type="submit"
-               value="Send email"
-               class="rounded-md border-2 px-1.5 hover:border-amber-700 hover:bg-amber-200 hover:text-amber-700" />
+        <input type="submit" value="Send email" class="btn" />
       </form>
     </div>
   {% endif %}
