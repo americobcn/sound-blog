@@ -3,22 +3,22 @@
   {{ post.title }}
 {% endblock title %}
 {% block content %}
-  <h1 class="text-amber-400 text-3xl">{{ post.title }}</h1>
-  <p class="text-gray-300 text-xs font-thin mb-2">Published {{ post.publish }} by {{ post.author }}</p>
+  <h1 class="text-3xl text-amber-400">{{ post.title }}</h1>
+  <p class="mb-2 text-xs font-thin text-gray-300">Published {{ post.publish }} by {{ post.author }}</p>
   <span class="text-gray-200">{{ post.body|linebreaks }}</span>
-  <div class="flex-none w-full mt-3">
-    <p class="text-amber-200 mb-4 border-2 rounded-md px-2 mt-2 w-fit hover:text-amber-800 hover:bg-amber-200">
+  <div class="mt-3 w-full flex-none">
+    <p class="mt-2 mb-4 w-fit rounded-md border-2 px-2 text-amber-200 hover:bg-amber-200 hover:text-amber-800">
       <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
     </p>
     {% with comments.count as total_comments %}
-      <h2 class="text-amber-300 border-b border-gray-600 text-left">
+      <h2 class="border-b border-gray-600 text-left text-amber-300">
         {{ total_comments }} comment{{ total_comments|pluralize }}
       </h2>
     {% endwith %}
     {% for comment in comments %}
-      <div class="border-b border-gray-600 ">
+      <div class="border-b border-gray-600">
         <span class="text-gray-200">{{ comment.body| linebreaks }}</span>
-        <span class="text-gray-300 text-xs font-thin">
+        <span class="text-xs font-thin text-gray-100">
           Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}
         </span>
       </div>

@@ -29,6 +29,7 @@ dependencies = [
     "tqdm==4.67.1",
     "typing_extensions==4.12.2",
     "python-decouple (>=3.8,<4.0)",
+    "django-taggit (>=6.1.0,<7.0.0)",
 ]
 
 [build-system]

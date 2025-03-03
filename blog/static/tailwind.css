@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@layer {
+  .btn {
+    @apply rounded-2xl border-2 border-amber-300 px-3 py-1 text-center text-sm font-medium text-amber-300 shadow-amber-400 hover:border-amber-700 hover:bg-amber-200 hover:font-bold hover:text-amber-700 hover:shadow-lg;
+  }
+  .card {
+    @apply h-64 max-w-sm overflow-hidden rounded border-2 border-slate-600 p-2 shadow-md shadow-slate-600;
+  }
+  .hero {
+    @apply mt-8 grid max-w-4xl grid-cols-2 justify-self-center rounded-md bg-slate-700 px-3 py-2 shadow-md shadow-slate-600 max-sm:grid-cols-1;
+  }
+}
