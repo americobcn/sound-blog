@@ -13,7 +13,7 @@
             <a href="{% url "blog:post_list_by_tag" tag.slug %}" class="text-xs">{{ tag.name }}</a>
             {% if not forloop.last %},{% endif %}
           {% endfor %}
-          <span class="text-gray-200">{{ posts.0.body|truncatewords:50|linebreaks }}</span>
+          <span class="text-gray-200">{{ posts.0.body|markdown|truncatewords_html:30 }}</span>
           <p class="mb-4 text-xs font-thin text-gray-300">Published {{ posts.0.publish }} by {{ posts.0.author }}</p>
         </div>
         <img class="my-2 h-auto w-full justify-self-center rounded-md max-sm:hidden sepia blur-xs backdrop-invert-65"
@@ -33,7 +33,7 @@
                 <a href="{% url "blog:post_list_by_tag" tag.slug %}" class="text-xs">{{ tag.name }}</a>
                 {% if not forloop.last %},{% endif %}
               {% endfor %}
-              <span class=" text-gray-300">{{ post.body|truncatewords:40|linebreaks }}</span>
+              <span class=" text-gray-300">{{ post.body|markdown|truncatewords_html:30 }}</span>
               <p class="mt-0.5 text-xs font-thin text-gray-300">Published {{ post.publish }} by {{ post.author }}</p>
             </article>
           </li>
@@ -41,8 +41,20 @@
       </ul>
     </div>
     <div class="hidden sidebar lg:flex lg:flex-col lg:col-span-2">
+      <h2 class="text-xl text-center mb-3 text-amber-400">There are currently {% total_posts %} posts in Sound Blog</h2>
       <h3 class="text-center text-xl text-amber-200">Latest Posts</h3>
       <div class="text-center text-gray-300">{% show_latest_posts 3 %}</div>
+      <h3 class="mt-3 text-center text-xl text-amber-200">Most Commented</h3>
+      {% get_most_commented_posts as most_commented_posts %}
+      <ul>
+        {% for post in most_commented_posts %}
+          <li class="text-center text-gray-300">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <a href="{% url "blog:post_feed" %}"
+         class="text-xs text-amber-400 text-center mt-3 px-3 hover:underline">Subscribe to Sound Blog RSS Feed</a>
     </div>
   </div>
   {% include "pagination.html" with page=posts %}

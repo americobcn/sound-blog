@@ -1,3 +1,6 @@
+# DOCKER: docker pull postgres:17.4
+# DOCKER: docker run --name=blog_db -e POSTGRES_DB=blog -e POSTGRES_USER=blog -e POSTGRES_PASSWORD=4321 -p 5432:5432 -d postgres:17.4
+
 from pathlib import Path
 from decouple import config
 
@@ -19,13 +22,15 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+SITE_ID = 1
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
     "django.contrib.staticfiles",
     "django_browser_reload",
     "taggit",
