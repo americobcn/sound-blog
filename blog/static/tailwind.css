@@ -9,16 +9,23 @@
   .btn {
     @apply w-fit rounded-2xl border-2 border-amber-300 px-3 py-1 text-center text-sm font-medium text-amber-300 shadow-amber-400 hover:border-amber-700 hover:bg-amber-200 hover:font-bold hover:text-amber-700 hover:shadow;
   }
+  .btn-comment {
+    @apply w-fit rounded-2xl border-2 border-slate-300 px-3 py-1 text-center text-sm font-medium text-slate-300 shadow-slate-400 hover:border-slate-700 hover:bg-slate-200 hover:font-bold hover:text-slate-700 hover:shadow;
+  }
   .card {
-    @apply h-fit md:h-64 max-w-sm overflow-hidden rounded border-2 border-slate-600 p-2 shadow-md shadow-slate-600;
+    @apply h-fit md:h-64 max-w-sm overflow-hidden rounded-xl border-2 border-slate-700 p-2 shadow-md shadow-slate-600 bg-slate-800;
   }
   .hero {
-    @apply grid max-w-4xl grid-cols-2 rounded-md bg-slate-700 px-3 py-2 shadow-md shadow-slate-600 max-sm:grid-cols-1;
+    @apply grid max-w-4xl grid-cols-2 rounded-xl bg-slate-700 px-3 py-2 shadow-md shadow-slate-600 max-sm:grid-cols-1;
   }
   .tag {
     @apply text-xs font-bold text-sky-500;
   }
   .sidebar {
-    @apply class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar";
+    @apply  border-l border-gray-700 overflow-hidden m-0;
   }
 }
+
+/*
+hidden md:absolute md:flex md:inset-y-0 md:right-0 md:w-40 md:overflow-hidden
+*/

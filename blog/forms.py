@@ -40,7 +40,7 @@ class CommentForm(forms.ModelForm):
         max_length=25,
         widget=forms.TextInput(
             attrs={
-                "class": "text-sm mb-3 px-2 border-2 border-amber-400 w-full text-gray-100 focus:outline-none focus:border-amber-300 focus:border-4 focus:bg-gray-800 rounded-md "
+                "class": "text-sm mb-3 px-2 border-2 border-slate-400 w-full text-gray-100 focus:outline-none focus:border-slate-300 focus:border-4 focus:bg-gray-800 rounded-md "
             }
         ),
     )
@@ -48,14 +48,14 @@ class CommentForm(forms.ModelForm):
         max_length=25,
         widget=forms.TextInput(
             attrs={
-                "class": "text-sm mb-3 px-2 border-2 border-amber-400 w-full text-gray-100 focus:outline-none focus:border-amber-300 focus:border-4 focus:bg-gray-800 rounded-md "
+                "class": "text-sm mb-3 px-2 border-2 border-slate-400 w-full text-gray-100 focus:outline-none focus:border-slate-300 focus:border-4 focus:bg-gray-800 rounded-md "
             }
         ),
     )
     body = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                "class": "block text-sm mx-auto mb-3 px-2 py-1 w-full border-2 border-amber-400 text-gray-100 focus:outline-none focus:border-amber-300 focus:border-4 focus:bg-gray-800 rounded-md"
+                "class": "block text-sm mx-auto mb-3 px-2 py-1 w-full border-2 border-slate-400 text-gray-100 focus:outline-none focus:border-slate-300 focus:border-4 focus:bg-gray-800 rounded-md"
             }
         )
     )
