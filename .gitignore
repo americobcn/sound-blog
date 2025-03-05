@@ -280,3 +280,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# credentials
+.pg_pass
+.pg_service.conf
