@@ -6,14 +6,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Américo's Sound Blog Page." />
-    <title>
-      {% block title %}
-        Sound Blog
-      {% endblock title %}
-    </title>
+    <title>Sound Blog</title>
     <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
   </head>
-  <body class="bg-slate-900 text-amber-100 font-roboto flex flex-col h-screen justify-between">
+  <body class="bg-slate-900 text-slate-100 font-roboto flex flex-col">
     <nav>
       {% include "blog/post/includes/navbar.html" %}
     </nav>
@@ -21,8 +17,6 @@
       {% block content %}
       {% endblock content %}
     </main>
-    <footer>
-      {% include "blog/post/includes/footer.html" %}
-    </footer>
+    <script src="{% static 'js/blog.js' %}"></script>
   </body>
 </html>

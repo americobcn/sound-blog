@@ -1,30 +1,24 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
-{% block title %}
-    Search
-{% endblock title %}
 {% block content %}
     {% if query %}
-        <h1>Posts with {{ query }}</h1>
-        <h3>
-            {% with results.count as total_results %}Found {{ total_results }} result{{ total_results|pluralize }}{% endwith %}
-        </h3>
-        {% for post in results %}
-            <h4>
-                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-            </h4>
-            {{ post.body|markdown|truncatewords_html:12 }}
-        {% empty %}
-            <p>No results</p>
-        {% endfor %}
-        <p>
-            <a href="{% url "blog:post_search" %}">Search Again</a>
-        </p>
-    {% else %}
-        <h1>Search posts</h1>
-        <form method="get">
-            {{ form.as_p }}
-            <input type="submit" value="Search">
-        </form>
-    {% endif %}
+        <div class="flex flex-col w-full items-center mx-auto  lg:w-2xl lg:mx-5 lg:mt-3 lg:absolute lg:top-20">
+            <h1 class="text-amber-200 text-3xl">
+                Posts with <span class="text-amber-400">"{{ query }}"</span>
+            </h1>
+            <h3 class="text-amber-300 text-xl">
+                {% with results.count as total_results %}Found {{ total_results }} result{{ total_results|pluralize }}{% endwith %}
+            </h3>
+            {% for post in results %}
+                <article class="m-2 border-2 border-gray-600 w-full p-2 rounded-2xl lg:w-3xl">
+                    <h4 class="text-amber-400 text-lg">
+                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </h4>
+                    {{ post.body|markdown|truncatewords_html:12 }}
+                </article>
+            {% empty %}
+                <p>No results</p>
+            {% endfor %}
+        {% endif %}
+    </div>
 {% endblock content %}

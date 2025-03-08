@@ -51,6 +51,7 @@ def post_detail(request, year, month, day, post):
 
     # List of similar posts
     post_tags_id = post.tags.values_list("id", flat=True)
+    print(post_tags_id)
     similar_posts = Post.published.filter(tags__in=post_tags_id).exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count("tags")).order_by(
         "-same_tags", "-publish"

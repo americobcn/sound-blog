@@ -1,4 +1,4 @@
-<div class="mt-3 lg:w-2xl text-slate-400">
+<div id="comment-form" class="hidden mt-3 lg:w-2xl text-slate-400">
     <h3>Add a comment</h3>
     <form action='{% url "blog:post_comment" post.id %}'
           method="post"
@@ -11,6 +11,7 @@
         </span>
         <p class="text-xs mb-1">Body</p>
         {{ form.body }} {% csrf_token %}
-        <input type="submit" value="Add Comment" class="btn-comment mb-2" />
+        <input type="submit" value="Post Comment" class="btn-comment mb-2" />
+        <button class="btn" type="button" onclick="switchCommentForm()">Cancel</button>
     </form>
 </div>

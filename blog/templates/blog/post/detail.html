@@ -4,7 +4,7 @@
   {{ post.title }}
 {% endblock title %}
 {% block content %}
-  <div class="mx-2 my-1 lg:mx-5 lg:mt-3">
+  <div class="mx-2 my-1 lg:mx-5 lg:mt-3 lg:absolute lg:top-20">
     <div class="lg:grid lg:grid-cols-12">
       <div class="col-span-10 mr-2">
         <h1 class="text-3xl text-amber-400">{{ post.title }}</h1>
@@ -33,7 +33,7 @@
       </h2>
     {% endwith %}
     {% for comment in comments %}
-      <div class="border-b border-gray-600">
+      <div class="border-b border-gray-600 mb-2">
         <span class="text-gray-200">{{ comment.body| linebreaks }}</span>
         <span class="text-xs font-thin text-gray-100">
           Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}
@@ -42,6 +42,10 @@
     {% empty %}
       <p class="text-amber-300">No comments.</p>
     {% endfor %}
+    <button id="comment-button"
+            type="button"
+            class="btn mt-2 mx-auto"
+            onclick="switchCommentForm()">Add Comment</button>
+    {% include "blog/post/includes/comment_form.html" %}
   </div>
-  {% include "blog/post/includes/comment_form.html" %}
 {% endblock content %}

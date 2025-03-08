@@ -1,5 +1,5 @@
 # DOCKER: docker pull postgres:17.4
-# DOCKER: docker run --name=blog_db -e POSTGRES_DB=blog -e POSTGRES_USER=blog -e POSTGRES_PASSWORD=XXXX -p 5432:5432 -d postgres:17.4
+# DOCKER: docker run --name=sound_blog_db -e POSTGRES_DB=sound_blog -e POSTGRES_USER=sound_blog -e POSTGRES_PASSWORD=XXXX -p 5432:5432 -d postgres:17.4
 
 from pathlib import Path
 from decouple import config
