@@ -1,6 +1,5 @@
-{% load django_browser_reload %}
-{% load static %}
-<!DOCTYPE html>
+{% load django_browser_reload %} {% load static %}
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -9,13 +8,10 @@
     <title>Sound Blog</title>
     <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
   </head>
-  <body class="bg-slate-900 text-slate-100 font-roboto flex flex-col">
-    <nav>
-      {% include "blog/post/includes/navbar.html" %}
-    </nav>
-    <main class="flex flex-col w-full items-center col-span-10">
-      {% block content %}
-      {% endblock content %}
+  <body class="font-roboto flex flex-col bg-slate-900 text-slate-100">
+    <nav>{% include "blog/post/includes/navbar.html" %}</nav>
+    <main class="col-span-10 flex w-full flex-col items-center">
+      {% block content %} {% endblock content %}
     </main>
     <script src="{% static 'js/blog.js' %}"></script>
   </body>
