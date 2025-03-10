@@ -1,5 +1,6 @@
-{% load django_browser_reload %} {% load static %}
-<!doctype html>
+{% load django_browser_reload %}
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -9,9 +10,12 @@
     <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
   </head>
   <body class="font-roboto flex flex-col bg-slate-900 text-slate-100">
-    <nav>{% include "blog/post/includes/navbar.html" %}</nav>
+    <nav>
+      {% include "blog/post/includes/navbar.html" %}
+    </nav>
     <main class="col-span-10 flex w-full flex-col items-center">
-      {% block content %} {% endblock content %}
+      {% block content %}
+      {% endblock content %}
     </main>
     <script src="{% static 'js/blog.js' %}"></script>
   </body>

@@ -24,6 +24,7 @@ ALLOWED_HOSTS = []
 # Application definition
 SITE_ID = 1
 INSTALLED_APPS = [
+    "account.apps.AccountConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
