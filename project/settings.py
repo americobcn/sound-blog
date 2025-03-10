@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django_browser_reload",
     "taggit",
     "blog.apps.BlogConfig",
+    "widget_tweaks",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "project.urls"
+
+LOGIN_REDIRECT_URL = "dashboard"
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
+
+# CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
 
 TEMPLATES = [
     {

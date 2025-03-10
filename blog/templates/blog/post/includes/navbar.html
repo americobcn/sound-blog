@@ -1,5 +1,5 @@
 {% load blog_tags %}
-<div class="flex items-center justify-between border-b border-gray-600 py-3 px-5">
+<div class="flex items-center justify-between border-b border-gray-600 px-5 py-3">
   <a href="{% url 'blog:post_list' %}" class="flex items-center">
     <span class="inline-block bg-gradient-to-r from-amber-400 via-green-500 to-indigo-500 bg-clip-text text-4xl font-semibold whitespace-nowrap text-transparent">Sound Blog</span>
   </a>
@@ -13,16 +13,24 @@
       </svg>
     </button>
   </div>
-  <form method='get'
+  <form method="get"
         action="{% url 'blog:post_search' %}"
-        class="items-center justify-center w-2xl">
+        class="w-2xl items-center justify-center">
     <input type="search"
            placeholder="Search"
            name="query"
-           class="text-amber-100 border-2 rounded-4xl w-full border-amber-400 p-2 focus:border-amber-400 focus:border-4 ">
+           class="w-full rounded-4xl border-2 border-amber-400 p-2 text-amber-100 focus:border-4 focus:border-amber-400" />
   </form>
   <div class="hidden md:block">
-    <button type="button" class="btn mr-2">Log in</button>
-    <button type="button" class="btn">Sign up</button>
+    {% if request.user.is_authenticated %}
+      <form action="{% url "account:logout" %}" method="post" class="inline">
+        {% csrf_token %}
+        <button type="submit" class="btn mr-2">Log out</button>
+      </form>
+      <span type="button" class="btn"><a href="{% url "account:dashboard" %}">Dash</a></span>
+    {% else %}
+      <span type="button" class="btn mr-2"><a href="{% url "account:login" %}">Log in</a></span>
+      <span type="button" class="btn"><a href="{% url "account:login" %}">Register</a></span>
+    {% endif %}
   </div>
 </div>

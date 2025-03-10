@@ -1,28 +1,31 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% block content %}
+    <nav>
+        {% include "blog/post/includes/navbar.html" %}
+    </nav>
     <div class="flex flex-col mx-auto items-center m-3">
-        <h1 class="text-amber-300 text-4xl mb-4">Log in</h1>
+        <h1 class="text-amber-400 text-4xl mb-4">Log in</h1>
         {% if form.errors %}
             <p class="border bg-red-200 border-red-400 text-red-800 px-3 rounded-xl mb-4 mx-auto">
                 Username or Password Invalid. Please try again
             </p>
         {% else %}
         {% endif %}
-        <div class="border border-amber-300 p-5 rounded-2xl mx-2">
+        <div class="border border-amber-400 p-5 rounded-2xl mx-2">
             <form action="{% url "account:login" %}"
                   method="post"
                   class="text-amber-200 ">
                 {% for field in form.visible_fields %}
                     <div class="mx-auto">
                         <p class=" text-red-800 p-4 mx-auto">{{ field.errors }}</p>
-                        <p class="mx-auto">
-                            <span class="text-md text-amber-500 flex flex-col mb-2">{{ field.label_tag }}</span> <span class="text-2xl border px-3 rounded-2xl focus:border-0">{{ field }}</span>
-                        </p>
+                        <span class="text-xl text-amber-400 flex flex-col mb-1">{{ field.label }}</span>
+                        {{ field|add_class:"text-2xl text-amber-100 border border-amber-400 px-2 rounded-2xl focus:border-2 focus:border-amber-600" }}
                     </div>
                 {% endfor %}
-                {% csrf_token %}
                 <input type="hidden" name="next" value="{{ next }}">
-                <input type="submit" value="Log in" class="btn mt-4">
+                <input type="submit" value="Log in" class="login-btn mt-4">
+                {% csrf_token %}
             </form>
         </div>
     </div>
