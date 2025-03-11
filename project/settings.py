@@ -53,11 +53,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "project.urls"
 
-LOGIN_REDIRECT_URL = "dashboard"
-LOGIN_URL = "login"
-LOGOUT_URL = "logout"
+LOGIN_REDIRECT_URL = "account:dashboard"
+LOGIN_URL = "account:login"
+LOGOUT_URL = "account:logout"
 
-# CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
 
 TEMPLATES = [
     {

@@ -23,5 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = document.getElementById("comment-button");
     commentForm.style.display = "none";
     button.innerHTML = "Add Comment";
+    button.style.display = "inline";
   };
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      cancelCommentButton();
+    }
+  });
 });

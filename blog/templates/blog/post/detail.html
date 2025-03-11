@@ -4,48 +4,54 @@
   {{ post.title }}
 {% endblock title %}
 {% block content %}
-  <div class="mx-2 my-1 lg:mx-5 lg:mt-3 lg:absolute lg:top-20">
-    <div class="lg:grid lg:grid-cols-12">
-      <div class="col-span-10 mr-2">
-        <h1 class="text-3xl text-amber-400">{{ post.title }}</h1>
-        <p class="mb-2 text-xs font-thin text-gray-300">Published {{ post.publish }} by {{ post.author }}</p>
-        <span class="text-gray-200">{{ post.body|markdown }}</span>
-        <div class="mt-3 mb-2 w-full flex-none">
-          <p class="btn">
-            <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
-          </p>
+  {% if request.user.is_authenticated %}
+    <div class="mx-2 my-1 lg:mx-5 lg:mt-3 lg:absolute lg:top-20">
+      <div class="lg:grid lg:grid-cols-12">
+        <div class="col-span-10 mr-2">
+          <h1 class="text-3xl text-amber-400">{{ post.title }}</h1>
+          <p class="mb-2 text-xs font-thin text-gray-300">Published {{ post.publish }} by {{ post.author }}</p>
+          <span class="text-gray-200">{{ post.body|markdown }}</span>
+          <div class="mt-3 mb-2 w-full flex-none">
+            <p class="btn">
+              <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
+            </p>
+          </div>
+        </div>
+        <div class="hidden lg:col-span-2 lg:flex lg:flex-col lg:items-center text-slate-500 lg:border-l">
+          <h2 class="text-amber-200 text-xl">Related Posts</h2>
+          {% for post in similar_posts %}
+            <p class="text-sm mt-1 text-slate-300">
+              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </p>
+          {% empty %}
+            <p>No similar posts.</p>
+          {% endfor %}
         </div>
       </div>
-      <div class="hidden lg:col-span-2 lg:flex lg:flex-col lg:items-center text-slate-500 lg:border-l">
-        <h2 class="text-amber-200 text-xl">Related Posts</h2>
-        {% for post in similar_posts %}
-          <p class="text-sm mt-1 text-slate-300">
-            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-          </p>
-        {% empty %}
-          <p>No similar posts.</p>
-        {% endfor %}
-      </div>
+      {% with comments.count as total_comments %}
+        <h2 class="border-b border-gray-600 text-left text-amber-300 mt-2">
+          {{ total_comments }} comment{{ total_comments|pluralize }}
+        </h2>
+      {% endwith %}
+      {% for comment in comments %}
+        <div class="border-b border-gray-600 mb-2">
+          <span class="text-gray-200">{{ comment.body| linebreaks }}</span>
+          <span class="text-xs font-thin text-gray-100">
+            Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}
+          </span>
+        </div>
+      {% empty %}
+        <p class="text-amber-300">No comments.</p>
+      {% endfor %}
+      <button id="comment-button"
+              type="button"
+              class="btn mt-2 mx-auto"
+              onclick="switchCommentForm()">Add Comment</button>
+      {% include "blog/post/includes/comment_form.html" %}
     </div>
-    {% with comments.count as total_comments %}
-      <h2 class="border-b border-gray-600 text-left text-amber-300 mt-2">
-        {{ total_comments }} comment{{ total_comments|pluralize }}
-      </h2>
-    {% endwith %}
-    {% for comment in comments %}
-      <div class="border-b border-gray-600 mb-2">
-        <span class="text-gray-200">{{ comment.body| linebreaks }}</span>
-        <span class="text-xs font-thin text-gray-100">
-          Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}
-        </span>
-      </div>
-    {% empty %}
-      <p class="text-amber-300">No comments.</p>
-    {% endfor %}
-    <button id="comment-button"
-            type="button"
-            class="btn mt-2 mx-auto"
-            onclick="switchCommentForm()">Add Comment</button>
-    {% include "blog/post/includes/comment_form.html" %}
-  </div>
+  {% else %}
+    <p class="text-amber-200 text-4xl mt-4">
+      You must be <a href="{% url "account:login" %}" class="text-amber-400">logged in</a> to acces this content.
+    </p>
+  {% endif %}
 {% endblock content %}

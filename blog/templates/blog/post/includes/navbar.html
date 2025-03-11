@@ -23,13 +23,15 @@
   </form>
   <div class="hidden md:block">
     {% if request.user.is_authenticated %}
-      <form action="{% url "account:logout" %}" method="post" class="inline">
+      <form action="{% url "account:logout" %}"
+            method="post"
+            class="m-0 p-0 inline">
+        <button type="submit" class="btn mr-2">Logout</button>
         {% csrf_token %}
-        <button type="submit" class="btn mr-2">Log out</button>
       </form>
-      <span type="button" class="btn"><a href="{% url "account:dashboard" %}">Dash</a></span>
+      <span type="button" class="btn"><a href="{% url "account:dashboard" %}">Dashboard</a></span>
     {% else %}
-      <span type="button" class="btn mr-2"><a href="{% url "account:login" %}">Log in</a></span>
+      <span type="button" class="btn mr-2"><a href="{% url "account:login" %}">Login</a></span>
       <span type="button" class="btn"><a href="{% url "account:login" %}">Register</a></span>
     {% endif %}
   </div>

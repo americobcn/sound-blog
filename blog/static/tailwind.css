@@ -24,9 +24,6 @@
   .sidebar {
     @apply m-0 overflow-hidden border-l border-gray-700;
   }
-  .login-btn {
-    @apply w-fit rounded-3xl border-2 border-amber-400 px-3 py-1 text-center text-xl font-medium text-amber-400 shadow-amber-400 hover:border-amber-700 hover:bg-amber-200 hover:font-bold hover:text-amber-700 hover:shadow;
-  }
 }
 
 /*

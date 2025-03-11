@@ -68,10 +68,6 @@
     --text-3xl--line-height: calc(2.25 / 1.875);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
-    --text-5xl: 3rem;
-    --text-5xl--line-height: 1;
-    --text-6xl: 3.75rem;
-    --text-6xl--line-height: 1;
     --font-weight-thin: 100;
     --font-weight-light: 300;
     --font-weight-medium: 500;
@@ -81,7 +77,6 @@
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
-    --radius-3xl: 1.5rem;
     --radius-4xl: 2rem;
     --blur-xs: 4px;
     --default-transition-duration: 150ms;
@@ -272,6 +267,9 @@
   }
   .col-span-10 {
     grid-column: span 10 / span 10;
+  }
+  .m-0 {
+    margin: calc(var(--spacing) * 0);
   }
   .m-2 {
     margin: calc(var(--spacing) * 2);
@@ -564,6 +562,9 @@
   .fill-current {
     fill: currentColor;
   }
+  .p-0 {
+    padding: calc(var(--spacing) * 0);
+  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
@@ -626,14 +627,6 @@
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
-  }
-  .text-5xl {
-    font-size: var(--text-5xl);
-    line-height: var(--tw-leading, var(--text-5xl--line-height));
-  }
-  .text-6xl {
-    font-size: var(--text-6xl);
-    line-height: var(--tw-leading, var(--text-6xl--line-height));
   }
   .text-lg {
     font-size: var(--text-lg);
@@ -729,6 +722,9 @@
   }
   .text-yellow-200 {
     color: var(--color-yellow-200);
+  }
+  .capitalize {
+    text-transform: capitalize;
   }
   .underline {
     text-decoration-line: underline;
@@ -1123,49 +1119,6 @@
     border-left-style: var(--tw-border-style);
     border-left-width: 1px;
     border-color: var(--color-gray-700);
-  }
-  .login-btn {
-    width: fit-content;
-    border-radius: var(--radius-3xl);
-    border-style: var(--tw-border-style);
-    border-width: 2px;
-    border-color: var(--color-amber-400);
-    padding-inline: calc(var(--spacing) * 3);
-    padding-block: calc(var(--spacing) * 1);
-    text-align: center;
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
-    --tw-font-weight: var(--font-weight-medium);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-amber-400);
-    --tw-shadow-color: var(--color-amber-400);
-    &:hover {
-      @media (hover: hover) {
-        border-color: var(--color-amber-700);
-      }
-    }
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-amber-200);
-      }
-    }
-    &:hover {
-      @media (hover: hover) {
-        --tw-font-weight: var(--font-weight-bold);
-        font-weight: var(--font-weight-bold);
-      }
-    }
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-amber-700);
-      }
-    }
-    &:hover {
-      @media (hover: hover) {
-        --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      }
-    }
   }
 }
 @property --tw-translate-x {
