@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import LoginForm
 from django.contrib.auth.decorators import login_required
 
@@ -16,7 +16,9 @@ def user_login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponse("Authenticated Succesfully")
+                next_url = request.POST.get("next", request.GET.get("next", "account:dashboard"))
+                # return HttpResponse("Authenticated Succesfully")
+                return redirect(next, "account:dashboard")
             else:
                 return HttpResponse("Diasbled account")
 

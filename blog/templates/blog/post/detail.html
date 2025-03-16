@@ -5,9 +5,9 @@
 {% endblock title %}
 {% block content %}
   {% if request.user.is_authenticated %}
-    <div class="mx-2 my-1 lg:mx-5 lg:mt-3 lg:absolute lg:top-20">
+    <div class="mx-2 lg:mx-5 lg:mt-3 lg:absolute lg:top-20">
       <div class="lg:grid lg:grid-cols-12">
-        <div class="col-span-10 mr-2">
+        <div class="col-span-10 mr-2 mt-3">
           <h1 class="text-3xl text-amber-400">{{ post.title }}</h1>
           <p class="mb-2 text-xs font-thin text-gray-300">Published {{ post.publish }} by {{ post.author }}</p>
           <span class="text-gray-200">{{ post.body|markdown }}</span>
@@ -17,7 +17,7 @@
             </p>
           </div>
         </div>
-        <div class="hidden lg:col-span-2 lg:flex lg:flex-col lg:items-center text-slate-500 lg:border-l">
+        <div class="hidden md:mt-3  md:col-span-2 md:flex md:flex-col md:items-center text-slate-500 md:border-l">
           <h2 class="text-amber-200 text-xl">Related Posts</h2>
           {% for post in similar_posts %}
             <p class="text-sm mt-1 text-slate-300">
@@ -37,7 +37,7 @@
         <div class="border-b border-gray-600 mb-2">
           <span class="text-gray-200">{{ comment.body| linebreaks }}</span>
           <span class="text-xs font-thin text-gray-100">
-            Comment {{ forloop.counter }} by {{ comment.name }} on {{ comment.created }}
+            Comment {{ forloop.counter }} by {{ comment.author }} on {{ comment.created }}
           </span>
         </div>
       {% empty %}

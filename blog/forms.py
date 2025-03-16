@@ -36,22 +36,6 @@ class EmailPostForm(forms.Form):
 
 
 class CommentForm(forms.ModelForm):
-    name = forms.CharField(
-        max_length=25,
-        widget=forms.TextInput(
-            attrs={
-                "class": "text-sm mb-3 px-2 border-2 border-slate-400 w-full text-gray-100 focus:outline-none focus:border-slate-300 focus:border-4 focus:bg-gray-800 rounded-md "
-            }
-        ),
-    )
-    email = forms.CharField(
-        max_length=25,
-        widget=forms.TextInput(
-            attrs={
-                "class": "text-sm mb-3 px-2 border-2 border-slate-400 w-full text-gray-100 focus:outline-none focus:border-slate-300 focus:border-4 focus:bg-gray-800 rounded-md ",
-            }
-        ),
-    )
     body = forms.CharField(
         widget=forms.Textarea(
             attrs={
@@ -62,7 +46,7 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ["name", "email", "body"]
+        fields = ["body"]
 
 
 class SearchForm(forms.Form):

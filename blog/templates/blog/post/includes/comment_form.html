@@ -1,20 +1,12 @@
 {% load widget_tweaks %}
 <div id="comment-form" class="hidden mt-3 lg:w-2xl text-slate-400">
-    <h3>Add a comment</h3>
-    <form action='{% url "blog:post_comment" post.id %}'
-          method="post"
-          class="items-center rounded-md border-2 px-3 py-1.5 ">
-        <!--
-          <span class="text-xs">Name
-            <div>{{ form.name }}</div>
-        </span>
-        <span class="text-xs">Email
-            <div>{{ form.email }}</div>
-        </span>
-        -->
-        <p class="text-xs mb-1">Body</p>
-        {{ form.body }} {% csrf_token %}
-        <input type="submit" value="Post Comment" class="btn-comment mb-2" />
-        <button class="btn" type="button" onclick="switchCommentForm()">Cancel</button>
-    </form>
+  <h3>Add a comment</h3>
+  <form action='{% url "blog:post_comment" post.id %}'
+        method="post"
+        class="items-center rounded-md border-2 px-3 py-1.5 ">
+    <p class="text-xs mb-1">Body</p>
+    {{ form.body }} {% csrf_token %}
+    <input type="submit" value="Post Comment" class="btn-comment mb-2" />
+    <button class="btn" type="button" onclick="switchCommentForm()">Cancel</button>
+  </form>
 </div>

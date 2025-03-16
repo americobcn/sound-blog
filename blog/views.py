@@ -116,9 +116,10 @@ def post_comment(request, post_id):
         form = CommentForm(data=request.POST)
         if form.is_valid():
             # Create a comment without saving to the database
-            comment = form.save(commit=False)
+            comment = form.save(commit=False)            
             # Assign the current post to the comment
             comment.post = post
+            comment.author = request.user
             # Save the comment to the database
             comment.save()
     return render(

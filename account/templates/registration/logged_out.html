@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+    <nav>
+        {% include "blog/post/includes/navbar.html" %}
+    </nav>
     <div class="flex flex-col items-center">
         <h1 class="text-4xl text-amber-400 my-3">Good Bye!</h1>
         <p>You have been succesfully logged out.</p>
