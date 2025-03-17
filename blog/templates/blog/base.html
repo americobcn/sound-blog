@@ -9,11 +9,11 @@
     <title>Sound Blog</title>
     <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
   </head>
-  <body class="font-roboto flex flex-col bg-slate-900 text-slate-200 col-span-10">
+  <body class="font-roboto bg-gray-800 text-gray-200">
     <nav>
       {% include "blog/post/includes/navbar.html" %}
     </nav>
-    <main class="col-span-10 flex w-full flex-col items-center my-2">
+    <main class="flex flex-col">
       {% block content %}
       {% endblock content %}
     </main>
